@@ -1,3 +1,8 @@
+# bin and tmp
+my_runner
+*~
+\#*\#
+
 # Prerequisites
 *.d
 
