@@ -5,7 +5,7 @@
 ## Login   <siqual@8570p>
 ## 
 ## Started on  Tue Oct 31 10:05:14 2017 Siqual
-## Last update Wed Nov  1 09:43:24 2017 Siqual
+## Last update Thu Nov  2 14:12:24 2017 Siqual
 ##
 
 NAME		=	my_runner
@@ -23,6 +23,7 @@ SRCS		=	$(addprefix $(SRCS_DIR), \
 						main.c			\
 						events_handling.c	\
 						program_handling.c	\
+						buffer_handling.c	\
 						collision_handling.c	\
 			)
 

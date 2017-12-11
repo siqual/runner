@@ -5,26 +5,28 @@
 ** Login   <siqual@8570p>
 ** 
 ** Started on  Tue Oct 31 17:21:39 2017 Siqual
-** Last update Wed Nov  1 09:37:51 2017 Siqual
+** Last update Thu Nov  2 14:11:48 2017 Siqual
 */
 
 #include "graphics.h"
 #include <math.h>
 
-int	circle_collision(sfSprite* obj1, sfSprite* obj2)
+int	collision_sprite(sfSprite* obj1, sfSprite* obj2)
 {
-	float	radius1;
-	float	radius2;
-	float	x_dist;
-	float	y_dist;
+	sfFloatRect r1;
+	sfFloatRect r2;
 
-	radius1 = (sfSprite_getPosition(obj1).x +
-		   sfSprite_getPosition(obj1).y) / 4;
-	radius2 = (sfSprite_getPosition(obj2).x +
-		   sfSprite_getPosition(obj2).y) / 4;
-	x_dist = (sfSprite_getPosition(obj1).x -
-		  sfSprite_getPosition(obj2).x);
-	y_dist = (sfSprite_getPosition(obj1).y -
-		  sfSprite_getPosition(obj2).y);
-	return sqrt(x_dist * x_dist + y_dist * y_dist) <= radius2 + radius1;
+	r1 = sfSprite_getGlobalBounds(obj1);
+	r2 = sfSprite_getGlobalBounds(obj2);
+	return sfFloatRect_intersects(&r1, &r2, NULL);
+}
+
+int	collision_rectangle(sfRectangleShape* obj1, sfRectangleShape* obj2)
+{
+	sfFloatRect r1;
+	sfFloatRect r2;
+
+	r1 = sfRectangleShape_getGlobalBounds(obj1);
+	r2 = sfRectangleShape_getGlobalBounds(obj2);
+	return sfFloatRect_intersects(&r1, &r2, NULL);
 }
